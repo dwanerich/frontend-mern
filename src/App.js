@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Container } from '@material-ui/core'
+import Home  from './pages/Header'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setUser } from './redux/features/authSlice'
 
-function App() {
+
+
+const App = () => {
+  const dispatch = useDispatch()
+  const user = JSON.parse(localStorage.getItem('profile'));
+  useEffect(() => {
+    dispatch(setUser(user))
+  }, [user])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+    <Container maxWidth='xl'>
+      <Routes>
+
+        <Route path={'/'} element={<Home />}/>
+        <Route path='/login' element={<Login />}/>
+        <Route path='/register' element={<Register />}/>
+
+
+      </Routes>
+    </Container>
+    </BrowserRouter>
+
   );
 }
 

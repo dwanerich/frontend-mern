@@ -18,7 +18,6 @@ const initialState = {
   confirmPassword: ''
 }
 
-
 const Register = () => {
   const { loading, error } = useSelector((state) => ({ ...state.auth}))
   const [formValue, setFormValue] = useState(initialState);

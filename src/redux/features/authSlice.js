@@ -53,6 +53,7 @@ const authSlice = createSlice({
       state.user= action.payload;
     },
     setLogout: ( state, action) => {
+      localStorage.clear()
       state.user = null;
     }
   },

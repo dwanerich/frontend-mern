@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Container } from '@material-ui/core'
-import Home  from './pages/Header'
+import Home  from './pages/Home'
+import Header from './pages/Header'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import { useDispatch } from 'react-redux'
@@ -21,13 +22,11 @@ const App = () => {
     <BrowserRouter>
 
     <Container maxWidth='xl'>
+      <Header />
       <Routes>
-
         <Route path={'/'} element={<Home />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>
-
-
       </Routes>
     </Container>
     </BrowserRouter>

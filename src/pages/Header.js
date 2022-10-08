@@ -36,7 +36,7 @@ let Header = (props) => {
   const drawer = (
     <Link to={'/'}>
 
-    <Box onClick={handleDrawerToggle} sx={{ display: 'flexbox'}}>
+    <Box onClick={handleDrawerToggle} sx={{ display: 'flexbox' }}>
       <Typography variant="h3" sx={{ my: 2 }}>
       DeadStock
         </Typography>
@@ -44,16 +44,20 @@ let Header = (props) => {
 
         {user?.result?._id && (
           <>
+              <Link style={{textDecoration: 'none'}}>Logged in as: {user?.result?.name}</Link> <br />
               <Link to={'/'}><Button>Home</Button></Link> <br />
               <Link to={'/add'}><Button>Add</Button></Link> <br />
               <Link to={'/dashboard'}><Button>Dashboard</Button></Link> <br />
           </>
         )}
         {user?.result?._id ? (
-              <Link onClick={handleLogout}> <Button>Logout</Button></Link>
+              <Link to={'/login'} onClick={handleLogout}> <Button>Logout</Button></Link>
 
               ) : (
-              <Link to={'/login'}><Button>Login</Button></Link>
+                <>
+                <Link to={'/'}><Button>Home</Button></Link>
+                <Link to={'/login'}><Button>Login</Button></Link>
+                </>
               )}
               </Box>
               </Link>
@@ -92,20 +96,24 @@ return (
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
           </Typography>
-          <Box sx={{ display: { xs: 'none', lg: 'block' }, textDecoration: 'none'}}>
+          <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
             <List>
             {user?.result?._id && (
           <>
+              <Link style={{textDecoration: 'none'}}>Logged in as {user?.result?.name}</Link>
               <Link to={'/'}><Button>Home</Button></Link>
               <Link to={'/add'}><Button>Add</Button></Link>
               <Link to={'/dashboard'}><Button>Dashboard</Button></Link>
           </>
         )}
               {user?.result?._id ? (
-              <Link onClick={handleLogout}><Button>Logout</Button></Link>
+              <Link to={'/login'} onClick={handleLogout}><Button>Logout</Button></Link>
 
               ) : (
-              <Link to={'/login'}><Button>Login</Button></Link>
+                <>
+                <Link to={'/'}><Button>Home</Button></Link>
+                <Link to={'/login'}><Button>Login</Button></Link>
+                </>
               )}
             </List>
           </Box>

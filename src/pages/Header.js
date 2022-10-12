@@ -43,10 +43,10 @@ let Header = (props) => {
       <Divider />
 
         {user?.result?._id && (
-          <>
-              <Link style={{textDecoration: 'none'}}>Logged in as: {user?.result?.name}</Link> <br />
+      <>
+              <Link style={{textDecoration: 'none'}}>Welcome: {user?.result?.name}</Link> <br />
               <Link to={'/'}><Button>Home</Button></Link> <br />
-              <Link to={'/add'}><Button>Add</Button></Link> <br />
+              <Link to={'/addSneaker'}><Button>Add</Button></Link> <br />
               <Link to={'/dashboard'}><Button>Dashboard</Button></Link> <br />
           </>
         )}
@@ -70,18 +70,18 @@ const container = window !== undefined ? () => window().document.body : undefine
 return (
     <>
           <AppBar position='static' style={{
-          height: 200,
           alignItems: 'center',
-          backgroundImage: `url(${deadstock})`,
+          backgroundColor: 'transparent',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'right',
-          backgroundColor: 'black'}}>
-          <Typography style={{color: 'yellow'}}
+          borderBlockStyle: '1px solid black'}}>
+          <Typography style={{color: 'black'}}
           variant='h1'>
           DeadStock
           </Typography>
           <Toolbar>
           <IconButton
+
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -99,18 +99,18 @@ return (
           <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
             <List>
             {user?.result?._id && (
-          <>
-              <Link style={{textDecoration: 'none'}}>Logged in as {user?.result?.name}</Link>
+              <>
+              <Link style={{textDecoration: 'none'}}>Welcome {user?.result?.name}!</Link>
               <Link to={'/'}><Button>Home</Button></Link>
-              <Link to={'/add'}><Button>Add</Button></Link>
+              <Link to={'/addSneaker'}><Button>Add</Button></Link>
               <Link to={'/dashboard'}><Button>Dashboard</Button></Link>
-          </>
+        </>
         )}
               {user?.result?._id ? (
-              <Link to={'/login'} onClick={handleLogout}><Button>Logout</Button></Link>
+                <Link to={'/login'} onClick={handleLogout}><Button>Logout</Button></Link>
 
-              ) : (
-                <>
+                ) : (
+                  <>
                 <Link to={'/'}><Button>Home</Button></Link>
                 <Link to={'/login'}><Button>Login</Button></Link>
                 </>
@@ -122,7 +122,7 @@ return (
           <br /> <br />
 
           <Box component="nav">
-        <Drawer
+        <Drawer style={{backGroundColor: 'black'}}
           container={container}
           variant="temporary"
           open={mobileOpen}
